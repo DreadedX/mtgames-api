@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Set meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+		<meta name="theme-color" content="#673ab7">
+
+		<!-- TODO: Testing only -->
+		<!-- Add to homescreen for Chrome on Android -->
+		<meta name="mobile-web-app-capable" content="yes">
+		<link rel="icon" sizes="192x192" href="auth/favicon.png">
+
+		<link rel="shortcut icon" href="auth/favicon.png">
+
+		<!-- TODO Should have local copy -->
+		<!-- Load jQuery -->
+		<script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+		<!-- Load material design lite -->
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.deep_purple-indigo.min.css">
+		<script defer src="https://code.getmdl.io/1.1.2/material.min.js"></script>
+
+		<!-- Load custom style and javascript -->
+		<link rel="stylesheet" href="auth/style.css">
+		<script defer src="auth/script.js"></script>
+
+		<!-- Set title -->
+		<title>MT Games Auth</title>
+	</head>
+	<body>
+		<!-- Login dialog -->
+		<div class="mdl-layout mdl-js-layout mdl-color--grey-100" id="login" style="display: none;">
+			<div class="mdl-card mdl-shadow--2dp">
+				<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+					<div class="mdl-typography--display-1 mdl-color-text--primary">
+						<div class="title mdl-shadow--2dp">
+							<img src="auth/mtgames.svg" height="24px"></img>
+						</div>
+					</div>
+				</div>
+				<div class="mdl-card__supporting-text">
+					<form id="login_form">
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="textfield_username">
+							<input class="mdl-textfield__input" type="text" name="username" id="username" autocomplete="off" oninput="makeValid()"></input>
+							<label class="mdl-textfield__label" for="username" id="username_label"></label>
+							<span class="mdl-textfield__error" id="error"></span>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="textfield_password" oninput="makeValid()">
+							<input class="mdl-textfield__input" type="password" name="password" id="password"></img>
+							<label class="mdl-textfield__label" for="password" id="password_label"></img>
+						</div>
+					</form>
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+					<div class="center">
+						<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent" id="login_label" onclick="doLogin();"></a>
+					</div>
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+					<div class="lost-password">
+						<a href="#" id="lost_password_label" onclick="showLostPassword()"></a>
+					</div>
+					<div class="register">
+						<a href="#" id="register_label" onclick="showRegister()"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Auth dialog -->
+		<div class="mdl-layout mdl-js-layout mdl-color--grey-100" id="auth" style="display: none;">
+			<div class="mdl-card mdl-shadow--2dp">
+				<div class="mdl-card__title mdl-color--primary mdl-color-text--white" id="client_image">
+					<div class="mdl-typography--display-1 mdl-color-text--primary">
+						<div class="title mdl-shadow--2dp" id="client_name"></div>
+					</div>
+				</div>
+				<div class="mdl-card__supporting-text">
+					<div class="user-info">
+						<div>Dreaded_X</div>
+						<div id="email"></div>
+					</div>
+					<div class="avatar" id="avatar_user"></div>
+				</div>
+				<div class="mdl-card__supporting-text mdl-card--border">
+					<div id="auth_text"></div>
+				</div>
+				<div class="mdl-card__actions mdl-card--border center">
+					<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent" id="auth_label" onclick="doAuth();"></a>
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+					<div class="branding">
+						<a>MT Games Auth</a>
+					</div>
+					<div class="other-user">
+						<a href="#" id="other_user_label" onclick="doLogout();"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Lost password dialog -->
+		<div class="mdl-layout mdl-js-layout mdl-color--grey-100" id="lost-password" style="display: none;">
+			<div class="mdl-card mdl-shadow--2dp">
+				<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+					<div class="mdl-typography--display-1 mdl-color-text--primary">
+						<div class="title mdl-shadow--2dp">
+							<img src="auth/mtgames.svg" height="24px"></img>
+						</div>
+					</div>
+				</div>
+				<div class="mdl-card__supporting-text">
+					Lost password
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+					<div class="center">
+						<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent" id="login_label">Request new password</a>
+					</div>
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+					<div class="back">
+						<a href="#" id="back_label" onclick="showLogin()">Back</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Register dialog -->
+		<div class="mdl-layout mdl-js-layout mdl-color--grey-100" id="register" style="display: none;">
+			<div class="mdl-card mdl-shadow--2dp">
+				<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+					<div class="mdl-typography--display-1 mdl-color-text--primary">
+						<div class="title mdl-shadow--2dp">
+							<img src="auth/mtgames.svg" height="24px"></img>
+						</div>
+					</div>
+				</div>
+				<div class="mdl-card__supporting-text">
+					Register
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+					<div class="center">
+						<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent" id="login_label">Register</a>
+					</div>
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+					<div class="back">
+						<a href="#" id="back_label" onclick="showLogin()">Back</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

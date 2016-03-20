@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<script>
+			var client_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOjEyMzQsImlhdCI6MTQ1ODA3MjM0MCwidHlwZSI6ImNsaWVudCIsInZlcnNpb24iOjB9.kPxihLrjaRRStsBBvV69PO8z7ea3H9HXGdfZpiQ-8hA";
+			var redir_uri = "http://localhost:8080/v0/auth/test.html"
+		</script>
+		<script src="http://192.168.178.75:8080/v0/auth/login.js"></script>
+	</head>
+	<body>
+		MTAuth test<br>
+		<input type="button" value="New Window" onclick="doLogin()"/><br>
+		<input type="button" value="Same Window" onclick="location.replace('http://192.168.178.75:8080/v0/auth?client_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOjEyMzQsImlhdCI6MTQ1ODA3MjM0MCwidHlwZSI6ImNsaWVudCIsInZlcnNpb24iOjB9.kPxihLrjaRRStsBBvV69PO8z7ea3H9HXGdfZpiQ-8hA&redir_uri=http://localhost:8080/v0/auth/test.html')"/><br>
+	</body>
+</html>

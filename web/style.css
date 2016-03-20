@@ -1,0 +1,75 @@
+.mdl-layout {
+	align-items: center;
+	justify-content: center;
+}
+
+.mdl-card__actions .back,
+.mdl-card__actions .branding,
+.mdl-card__actions .lost-password,
+.mdl-card__actions .register,
+.mdl-card__actions .other-user {
+	text-transform: uppercase;
+	font-size: 12px;
+	display: inline-block;
+}
+
+.mdl-card__actions .back a,
+.mdl-card__actions .branding a,
+.mdl-card__actions .lost-password a,
+.mdl-card__actions .register a,
+.mdl-card__actions .other-user a {
+	color: #b2b2b2;
+	font-weight: 300;
+	text-decoration: none;
+}
+
+.mdl-card__actions .branding a {
+	color: #c0c0c0;
+}
+
+.mdl-card__actions .back a:hover,
+.mdl-card__actions .lost-password a:hover,
+.mdl-card__actions .register a:hover,
+.mdl-card__actions .other-user a:hover {
+	text-decoration: underline;
+}
+
+.mdl-card__actions .branding,
+.mdl-card__actions .lost-password {
+	float: left;
+}
+.mdl-card__actions .back,
+.mdl-card__actions .register,
+.mdl-card__actions .other-user {
+	float: right;
+}
+
+.center {
+	text-align: center;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+
+    background-position: center;
+    background-size: cover;
+
+    border-radius: 50%;
+}
+
+.mdl-card__title {
+	min-height: 88px;
+}
+
+.title {
+	background-color: #fff;
+	padding: 8px;
+    border-radius: 2px;
+	opacity: 0.85;
+}
+
+.user-info {
+	float: right;
+	text-align: right;
+}

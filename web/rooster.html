@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Set meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+		<meta name="theme-color" content="#4caf50">
+
+		<!-- TODO: Testing only -->
+		<!-- Add to homescreen for Chrome on Android -->
+		<meta name="mobile-web-app-capable" content="yes">
+		<link rel="icon" sizes="192x192" href="favicon.png">
+
+		<link rel="shortcut icon" href="favicon.png">
+
+		<!-- TODO Should have local copy -->
+		<!-- Load jQuery -->
+		<script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+		<!-- Load material design lite -->
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.green-light_green.min.css" />
+		<script defer src="https://code.getmdl.io/1.1.2/material.min.js"></script>
+
+		<script defer src="rooster.js"></script>
+
+		<!-- Set title -->
+		<title>Rooster</title>
+	</head>
+	<body>
+		<!-- Login page -->
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100" id="login">
+			<header class="mdl-layout__header mdl-color-text--white">
+				<div class="mdl-layout__header-row" style="padding-left: 20px;">
+					<!-- Title -->
+					<span class="mdl-layout-title">Rooster</span>
+				</div>
+			</header>
+			<main class="mdl-layout__content">
+			<div class="page-content">
+				<iframe id="auth" width="400" height="400"></iframe>
+			</div>
+			</main>
+		</div>
+	</body>
+</html>
